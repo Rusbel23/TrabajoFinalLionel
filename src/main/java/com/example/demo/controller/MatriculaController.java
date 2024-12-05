@@ -26,7 +26,7 @@ public class MatriculaController {
     @GetMapping("/nuevo")
     public String addMatricula(Model model) {
         Matricula matricula = new Matricula();
-        model.addAttribute("title", "Nueva Matrícula");
+        model.addAttribute("title", "Agregar Matrícula");
         model.addAttribute("matricula", matricula);
         return "pages/form-matricula";
     }
@@ -38,7 +38,7 @@ public class MatriculaController {
     }
 
     @GetMapping("/showUpdateMatricula/{id}")
-    public String updateMatricula(@PathVariable(value = "id") int id, Model model) {
+    public String updateMatricula(@PathVariable(value = "id") Long id, Model model) {
         Matricula matricula = matriculaService.getMatriculaById(id);
         model.addAttribute("matricula", matricula);
         return "pages/form-matriculaActualizar";
@@ -51,7 +51,7 @@ public class MatriculaController {
     }
 
     @GetMapping("/delete/{id}")
-    public String deleteMatricula(@PathVariable(value = "id") int id) {
+    public String deleteMatricula(@PathVariable(value = "id") Long id) {
         matriculaService.deleteMatricula(id);
         return "redirect:/matricula/listar";
     }

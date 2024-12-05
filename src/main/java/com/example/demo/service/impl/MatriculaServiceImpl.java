@@ -28,18 +28,18 @@ public class MatriculaServiceImpl implements MatriculaService {
     }
 
     @Override
-    public Matricula getMatriculaById(int id) {
-        Optional<Matricula> matricula = matriculaRepository.findById((long) id);
-        return matricula.orElseThrow(() -> new RuntimeException("Matrícula no encontrada con ID " + id));
-    }
-
-    @Override
-    public void deleteMatricula(int id) {
-        matriculaRepository.deleteById((long) id);
+    public Matricula getMatriculaById(Long id) {
+        Optional<Matricula> matricula = matriculaRepository.findById(id);
+        return matricula.orElseThrow(() -> new RuntimeException("Matricula no encontrada con ID " + id));
     }
 
     @Override
     public void updateMatricula(Matricula matricula) {
         matriculaRepository.save(matricula);
+    }
+
+    @Override
+    public void deleteMatricula(Long id) {
+        matriculaRepository.deleteById(id);
     }
 }

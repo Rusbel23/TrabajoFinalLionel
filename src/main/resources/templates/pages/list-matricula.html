@@ -18,7 +18,7 @@
                                 <div class="d-flex align-items-end row">
                                     <div class="col-sm-12">
                                         <div class="card-body">
-                                            <h5 class="card-title text-primary">Lista Matricula 🎉</h5>
+                                            <h5 class="card-title text-primary">Lista Usuarios 🎉</h5>
                                             <div>
                                                 <a th:href="@{/matricula/nuevo}" class="btn btn-primary">Nueva Matrícula</a>
                                             </div>
@@ -29,18 +29,19 @@
                                                         <th>ID</th>
                                                         <th>Estudiante</th>
                                                         <th>Curso</th>
-                                                        <th>Fecha Matrícula</th>
-                                                        <th>Estado</th>
+                                                        <th>Grado</th>
+                                                        <th>Monto</th>
                                                         <th>Acciones</th>
                                                     </tr>
                                                     </thead>
                                                     <tbody>
                                                     <tr th:each="matricula : ${listaMatriculas}">
                                                         <td th:text="${matricula.id}"></td>
-                                                        <td th:text="${matricula.estudiante.nombre}"></td>
-                                                        <td th:text="${matricula.curso.nombre}"></td>
+                                                        <td th:text="${matricula.estudiante}"></td>
+                                                        <td th:text="${matricula.curso}"></td>
+                                                        <td th:text="${matricula.grado}"></td>
+                                                        <td th:text="${matricula.monto}"></td>
                                                         <td th:text="${matricula.fechaMatricula}"></td>
-                                                        <td th:text="${matricula.estado}"></td>
                                                         <td>
                                                             <a th:href="@{/matricula/showUpdateMatricula/{id}(id=${matricula.id})}" class="btn btn-warning">Editar</a>
                                                             <a th:href="@{/matricula/delete/{id}(id=${matricula.id})}" class="btn btn-danger">Eliminar</a>
@@ -49,6 +50,7 @@
                                                     </tbody>
                                                 </table>
                                             </div>
+
 
                                         </div>
                                     </div>

@@ -39,4 +39,9 @@ public class UserController {
         userService.saveUser(user);
         return "redirect:/user/listar";
     }
+    @GetMapping("/delete/{id}")
+    public String deleteMatricula(@PathVariable(value = "id") Long id) {
+        userService.deleteUser(id);
+        return "redirect:/user/listar";
+    }
 }

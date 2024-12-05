@@ -18,31 +18,36 @@
                                 <div class="d-flex align-items-end row">
                                     <div class="col-sm-12">
                                         <div class="card-body">
-                                            <h5 class="card-title text-primary">Actualizar Matricula 🎉</h5>
+                                            <h5 class="card-title text-primary">Actualizar Estudiante 🎉</h5>
                                             <form th:action="@{/matricula/update}" th:object="${matricula}" method="post">
                                                 <input type="hidden" th:field="*{id}" />
                                                 <div>
                                                     <label>Estudiante</label>
-                                                    <select th:field="*{estudiante}" class="form-control">
-                                                        <!-- Aquí agregarías los estudiantes disponibles -->
-                                                    </select>
+                                                    <input type="text" th:field="*{estudiante}" class="form-control" placeholder="Nombre del Estudiante">
                                                 </div>
                                                 <div>
                                                     <label>Curso</label>
-                                                    <select th:field="*{curso}" class="form-control">
-                                                        <!-- Aquí agregarías los cursos disponibles -->
+                                                    <input type="text" th:field="*{curso}" class="form-control" placeholder="Curso">
+                                                </div>
+                                                <div>
+                                                    <label>Grado</label>
+                                                    <select th:field="*{grado}" class="form-control">
+                                                        <option value="1" th:selected="${matricula.grado == 1}">1er Semestre</option>
+                                                        <option value="2" th:selected="${matricula.grado == 2}">2do Semestre</option>
+                                                        <option value="3" th:selected="${matricula.grado == 3}">3er Semestre</option>
+                                                        <option value="4" th:selected="${matricula.grado == 4}">4to Semestre</option>
+                                                        <option value="5" th:selected="${matricula.grado == 5}">5to Semestre</option>
+                                                        <option value="6" th:selected="${matricula.grado == 6}">6to Semestre</option>
                                                     </select>
                                                 </div>
                                                 <div>
-                                                    <label>Fecha Matrícula</label>
-                                                    <input type="date" th:field="*{fechaMatricula}" class="form-control">
-                                                </div>
-                                                <div>
-                                                    <label>Estado</label>
-                                                    <input type="text" th:field="*{estado}" class="form-control" placeholder="Activo/Cancelado">
+                                                    <label>Monto</label>
+                                                    <input type="number" step="0.01" th:field="*{monto}" class="form-control" placeholder="Monto">
                                                 </div>
                                                 <button type="submit" class="btn btn-success">Actualizar</button>
                                             </form>
+
+
 
 
 

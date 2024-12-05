@@ -1,13 +1,4 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-
-</body>
-</html><!DOCTYPE html>
 <html lang="en"xmlns:th="http://www.thymeleaf.org">
 <head th:replace="layout/dashboard:: header">
 </head>
@@ -26,26 +17,41 @@
                                 <div class="d-flex align-items-end row">
                                     <div class="col-sm-12">
                                         <div class="card-body">
-                                            <h5 class="card-title text-primary">Registrar Matricula 🎉</h5>
+                                            <h5 class="card-title text-primary">Registrar Usuario 🎉</h5>
                                             <form th:action="@{/matricula/save}" th:object="${matricula}" method="post">
                                                 <div>
                                                     <label>Estudiante</label>
-                                                    <input type="text" th:field="*{estudiante}" class="form-control" placeholder="Estudiante">
+                                                    <input type="text" th:field="*{estudiante}" class="form-control" placeholder="Nombre del Estudiante">
                                                 </div>
                                                 <div>
                                                     <label>Curso</label>
                                                     <input type="text" th:field="*{curso}" class="form-control" placeholder="Curso">
                                                 </div>
                                                 <div>
-                                                    <label>Fecha Matrícula</label>
-                                                    <input type="date" th:field="*{fechaMatricula}" class="form-control">
-                                                </div>
+                                                    <label>Profesor</label>
+                                                    <input type="text" th:field="*{fechaMatricula}" class="form-control" placeholder="Nombre del Profesor">
+                                                </
                                                 <div>
-                                                    <label>Estado</label>
-                                                    <input type="text" th:field="*{estado}" class="form-control" placeholder="Estado">
+                                                    <label>Grado</label>
+                                                    <select th:field="*{grado}" class="form-control">
+                                                        <option value="0" >Seleccione un Grado</option>
+                                                        <option value="1er">1er Semestre</option>
+                                                        <option value="2do">2do Semestre</option>
+                                                        <option value="3ro">3er Semestre</option>
+                                                        <option value="4to">4to Semestre</option>
+                                                        <option value="5to">5to Semestre</option>
+                                                        <option value="6to">6to Semestre</option>
+                                                    </select>
+                                                </div>
+
+                                                <div>
+                                                    <label>Monto</label>
+                                                    <input type="number" step="0.01" th:field="*{monto}" class="form-control" placeholder="Monto">
                                                 </div>
                                                 <button type="submit" class="btn btn-success">Guardar</button>
                                             </form>
+
+
 
                                         </div>
                                     </div>
