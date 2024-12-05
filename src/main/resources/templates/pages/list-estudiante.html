@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout/dashboard:: header">
+</head>
+
+<body>
+<div class="layout-wrapper layout-content-navbar" >
+    <div class="layout-container">
+       <span th:replace="fragments/asider :: sidebar">
+       </span>
+        <div class="layout-page">
+            <span th:replace="fragments/header::header"></span>
+            <div class="content-wrapper">
+                <div class="container-xxl flex-grow-1 container-p-y">
+                    <div class="row">
+                        <div class="col-lg-12 mb-4 order-0">
+                            <div class="card">
+                                <div class="d-flex align-items-end row">
+                                    <div class="col-sm-12">
+                                        <div class="card-body">
+                                            <h5 class="card-title text-primary">Lista Estudiante 🎉</h5>
+                                            <div>
+                                                <a th:href="@{/estudiante/nuevo}" class="btn btn-primary">Nuevo</a>
+                                            </div>
+                                            <div class="table-responsive text-nowrap">
+                                                <table class="table">
+                                                    <thead>
+                                                    <tr>
+                                                        <th>ID</th>
+                                                        <th>Nombre</th>
+                                                        <th>Apellido</th>
+                                                        <th>Edad</th>
+                                                        <th>Correo</th>
+                                                        <th>Dirección</th>
+                                                        <th>Teléfono</th>
+                                                        <th>Acciones</th>
+                                                    </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                    <tr th:each="estudiante : ${listaEstudiantes}">
+                                                        <td th:text="${estudiante.id}"></td>
+                                                        <td th:text="${estudiante.nombre}"></td>
+                                                        <td th:text="${estudiante.apellido}"></td>
+                                                        <td th:text="${estudiante.edad}"></td>
+                                                        <td th:text="${estudiante.correo}"></td>
+                                                        <td th:text="${estudiante.direccion}"></td>
+                                                        <td th:text="${estudiante.telefono}"></td>
+                                                        <td>
+                                                            <a th:href="@{/estudiante/showUpdateEstudiante/{id}(id=${estudiante.id})}" class="btn btn-warning">Editar</a>
+                                                            <a th:href="@{/estudiante/delete/{id}(id=${estudiante.id})}" class="btn btn-danger">Eliminar</a>
+                                                        </td>
+                                                    </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+
+
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <span th:replace="fragments/footer::footer"></span>
+                <div class="content-backdrop fade"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div th:replace="layout/dashboard::script"></div>
+</body>
+</html>

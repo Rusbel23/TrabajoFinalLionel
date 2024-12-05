@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout/dashboard:: header">
+</head>
+
+<body>
+<div class="layout-wrapper layout-content-navbar" >
+    <div class="layout-container">
+       <span th:replace="fragments/asider :: sidebar">
+       </span>
+        <div class="layout-page">
+            <span th:replace="fragments/header::header"></span>
+            <div class="content-wrapper">
+                <div class="container-xxl flex-grow-1 container-p-y">
+                    <div class="row">
+                        <div class="col-lg-12 mb-4 order-0">
+                            <div class="card">
+                                <div class="d-flex align-items-end row">
+                                    <div class="col-sm-12">
+                                        <div class="card-body">
+                                            <h5 class="card-title text-primary">Lista Usuarios 🎉</h5>
+                                            <div>
+                                                <a th:href="@{/user/nuevo}" class="btn btn-primary">Nuevo</a>
+                                            </div>
+                                            <div class="table-responsive text-nowrap">
+                                                <table class="table">
+                                                    <thead>
+                                                    <tr>
+                                                        <th>ID</th>
+                                                        <th>Nombres</th>
+                                                        <th>Email</th>
+                                                        <th>Roles</th>
+                                                        <th>Acciones</th>
+                                                    </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                    <tr th:each="user : ${listaUsuarios}">
+                                                        <td th:text="${user.id}"></td>
+                                                        <td th:text="${user.firstName} + ' ' + ${user.lastName}"></td>
+                                                        <td th:text="${user.email}"></td>
+                                                        <td>
+                                                            <span th:each="role : ${user.roles}" th:text="${role.name}"></span>
+                                                        </td>
+                                                        <td>
+                                                            <a th:href="@{/user/delete/{id}(id=${user.id})}" class="btn btn-danger">Eliminar</a>
+                                                        </td>
+                                                    </tr>
+                                                    </tbody>
+                                                </table>
+
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <span th:replace="fragments/footer::footer"></span>
+                <div class="content-backdrop fade"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div th:replace="layout/dashboard::script"></div>
+</body>
+</html>
